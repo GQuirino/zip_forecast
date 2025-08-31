@@ -32,8 +32,9 @@ gem "kamal", require: false
 gem "thruster", require: false
 
 gem "redis"
-gem "redis-rails"
 gem "dotenv-rails"
+gem "rswag-api"
+gem "rswag-ui"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -44,6 +45,11 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+  gem "rspec-rails"
+  gem "vcr"
+  gem "webmock"
+  gem "simplecov", require: false
+  gem "rswag-specs"
 end
 
 group :development do
