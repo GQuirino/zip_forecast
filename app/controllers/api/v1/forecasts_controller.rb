@@ -35,7 +35,7 @@ module Api
                 locals: { errors: address.errors })
             end
             format.json do
-              render json: { errors: address.errors.as_json }, status: :unprocessable_entity
+              render json: { errors: address.errors.as_json }, status: :unprocessable_content
             end
           end
         end
@@ -77,7 +77,7 @@ module Api
               locals: { errors: ActiveModel::Errors.new(nil).tap { |e| e.add(:base, error.message) } })
           end
           format.json do
-            render json: { error: error.message }, status: :unprocessable_entity
+            render json: { error: error.message }, status: :unprocessable_content
           end
         end
       end
