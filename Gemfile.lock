@@ -1,3 +1,9 @@
+PATH
+  remote: forecast_ui
+  specs:
+    forecast_ui (0.1.0)
+      rails (>= 8.0.2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -395,6 +401,7 @@ DEPENDENCIES
   brakeman
   debug
   dotenv-rails
+  forecast_ui!
   httparty
   importmap-rails
   jbuilder
