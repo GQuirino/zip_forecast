@@ -36,6 +36,8 @@ gem "redis"
 gem "dotenv-rails"
 gem "rswag-api"
 gem "rswag-ui"
+gem "tailwindcss-rails", "~> 3.3.1"
+gem "tailwindcss-ruby"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
