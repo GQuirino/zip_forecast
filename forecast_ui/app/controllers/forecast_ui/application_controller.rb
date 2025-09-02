@@ -1,7 +1,7 @@
 module ForecastUi
-  class ApplicationController < ActionController::Base
-  layout "application" # Use the main app's layout for all engine controllers
+  class ApplicationController < ::ApplicationController
+    layout "application"
 
-  def index; end
+    def index; end
   end
 end
