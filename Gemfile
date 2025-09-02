@@ -60,4 +60,4 @@ group :development do
   gem "web-console"
 end
 
-gem "forecast_ui", path: "forecast_ui"
+gem "forecast_ui", path: "./forecast_ui"
