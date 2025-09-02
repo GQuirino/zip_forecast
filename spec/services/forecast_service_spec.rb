@@ -16,7 +16,7 @@ RSpec.describe ForecastService do
         expect(result[:cached]).to eq(false)
 
         # Second call should be cached
-        cached_result = described_class.new(zip: zip, days: days).call
+        cached_result = service.call
         expect(cached_result[:cached]).to eq(true)
       end
     end

@@ -15,6 +15,10 @@ SimpleCov.start 'rails' do
 end
 
 RSpec.configure do |config|
+  config.before(:each) do
+    Rails.cache.clear
+  end
+
   config.use_active_record = false
 
   config.filter_rails_from_backtrace!

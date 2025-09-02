@@ -6,18 +6,16 @@ class ForecastService
   def initialize(zip:, days:)
     @zip = zip
     @days = days
-    @result = cached_result || {}
+    @result = {}
   end
 
   def call
-    unless result.present?
-      result.merge!(forecast_adapter.get_forecast(zip:, days:))
-      Rails.cache.write(cache_key, result.to_json, expires_in:)
+    return cached_result if cached_result.present?
 
-      result.merge!(cached: false)
-    end
+    result.merge!(forecast_adapter.get_forecast(zip:, days:))
+    Rails.cache.write(cache_key, result.to_json, expires_in:)
 
-    result
+    result.merge!(cached: false)
   end
 
   private
