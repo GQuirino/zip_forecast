@@ -30,8 +30,8 @@ module Api
         else
           respond_to do |format|
             format.turbo_stream do
-              render turbo_stream: turbo_stream.replace("forecast-results", 
-                partial: "shared/forecast_errors", 
+              render turbo_stream: turbo_stream.replace("forecast-results",
+                partial: "shared/forecast_errors",
                 locals: { errors: address.errors })
             end
             format.json do
@@ -72,8 +72,8 @@ module Api
       def handle_http_adapter_error(error)
         respond_to do |format|
           format.turbo_stream do
-            render turbo_stream: turbo_stream.replace("forecast-results", 
-              partial: "shared/forecast_errors", 
+            render turbo_stream: turbo_stream.replace("forecast-results",
+              partial: "shared/forecast_errors",
               locals: { errors: ActiveModel::Errors.new(nil).tap { |e| e.add(:base, error.message) } })
           end
           format.json do
