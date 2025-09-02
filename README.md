@@ -1,24 +1,57 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Zip Forecast
 
-Things you may want to cover:
+A Ruby on Rails API with a simple web interface for weather forecasts by address
 
-* Ruby version
+## Features
+- Weather forecast lookup by address
+- Unit system support (imperial/metric)
+- Forecast for next x days (from 1 up to 14 days)
 
-* System dependencies
+## Requirements
+- Ruby 3.3.x
+- Rails 8.0.x
+- Redis
+  or
+- Docker (for containerized development)
 
-* Configuration
+## Setup
 
-* Database creation
+### 1. Clone the repository
+```sh
+git clone https://github.com/GQuirino/zip_forecast.git
+cd zip_forecast
+```
 
-* Database initialization
+### 2. Run with Docker Compose
+```sh
+docker-compose up --build
+```
 
-* How to run the test suite
+The Rails app will be available at [http://localhost:3000](http://localhost:3000)
 
-* Services (job queues, cache servers, search engines, etc.)
+### 3. Run tests and lint
+```sh
+bundle exec rubocop
+bundle exec rspec
+```
 
-* Deployment instructions
+## API Documentation (Swagger)
 
-* ...
+Interactive API docs are available at:
+
+- [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+
+The OpenAPI spec is served at:
+
+- [http://localhost:3000/api-docs/v1/swagger.yaml](http://localhost:3000/api-docs/v1/swagger.yaml)
+
+
+## UI
+A simple web interface is available at:
+- [http://localhost:3000](http://localhost:3000)
+
+UI built as Rails::Engine component with Tailwind CSS.
+
+## License
+MIT
