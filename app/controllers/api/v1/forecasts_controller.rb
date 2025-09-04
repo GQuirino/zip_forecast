@@ -19,11 +19,12 @@ module Api
       end
 
       def forecast_days
-        params[:days].to_i
+        # Ensure param days is an integer value
+        Integer(params[:days]) rescue 1
       end
 
       def address_params
-        params.fetch(:address, {}).permit(:street, :city, :state, :zip)
+        params.require(:address).permit(:street, :city, :state, :zip)
       end
 
       def handle_error(error)
