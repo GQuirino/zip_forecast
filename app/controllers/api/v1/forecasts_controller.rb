@@ -6,19 +6,10 @@ module Api
       rescue_from Adapters::WeatherApi::HttpAdapter::Error, with: :handle_http_adapter_error
 
       def index
-        address = Address.new(address_params)
-
         if address.valid?
           @forecast = ForecastService.new(zip: address.zip, days: forecast_in_days).call
 
           respond_to do |format|
-            format.turbo_stream do
-              if unit_system == "metric"
-                render :show_metric
-              else
-                render :show_imperial
-              end
-            end
             format.json do
               if unit_system == "metric"
                 render :show_metric, status: :ok
@@ -29,11 +20,6 @@ module Api
           end
         else
           respond_to do |format|
-            format.turbo_stream do
-              render turbo_stream: turbo_stream.replace("forecast-results",
-                partial: "shared/forecast_errors",
-                locals: { errors: address.errors })
-            end
             format.json do
               render json: { errors: address.errors.as_json }, status: :unprocessable_content
             end
@@ -42,6 +28,10 @@ module Api
       end
 
       private
+
+      def address
+        @address ||= Address.new(address_params)
+      end
 
       def unit_system
         permitted_params[:unit].presence_in(%w[imperial metric]) || "imperial"
@@ -71,11 +61,6 @@ module Api
 
       def handle_http_adapter_error(error)
         respond_to do |format|
-          format.turbo_stream do
-            render turbo_stream: turbo_stream.replace("forecast-results",
-              partial: "shared/forecast_errors",
-              locals: { errors: ActiveModel::Errors.new(nil).tap { |e| e.add(:base, error.message) } })
-          end
           format.json do
             render json: { error: error.message }, status: :unprocessable_content
           end
