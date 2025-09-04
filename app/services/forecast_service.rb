@@ -1,27 +1,21 @@
 class ForecastService
-  attr_accessor :zip, :days, :result
+  attr_reader :zip, :days
+  
+  def initialize(zip:, days:)
+    @zip = zip
+    @days = [days, MAX_DAYS].min
+  end
+  
+  def call
+    cached_result || fetch_and_cache
+  end
+  
+  private
 
   MAX_DAYS = 14
 
-  def initialize(zip:, days:)
-    @zip = zip
-    @days = days
-    @result = {}
-  end
-
-  def call
-    return cached_result if cached_result.present?
-
-    result.merge!(forecast_adapter.get_forecast(zip:, days:))
-    Rails.cache.write(cache_key, result.to_json, expires_in:)
-
-    result.merge!(cached: false)
-  end
-
-  private
-
   def cache_key
-    "forecast:#{@zip}:#{@days}"
+    "forecast:#{zip}:#{days}"
   end
 
   def expires_in
@@ -33,10 +27,14 @@ class ForecastService
   end
 
   def cached_result
-    result = Rails.cache.read(cache_key)
-    return unless result
+    cached = Rails.cache.read(cache_key)
+    return unless cached
+    JSON.parse(cached).merge(cached: true)
+  end
 
-    result = JSON.parse(result)
-    result.merge!(cached: true)
+  def fetch_and_cache
+    result = forecast_adapter.get_forecast(zip:, days:)
+    Rails.cache.write(cache_key, result.to_json, expires_in:)
+    result.merge(cached: false)
   end
 end
