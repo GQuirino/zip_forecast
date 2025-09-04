@@ -1,70 +1,33 @@
 module Api
   module V1
     class ForecastsController < ApplicationController
-      include Turbo::StreamsHelper
-
-      rescue_from Adapters::WeatherApi::HttpAdapter::Error, with: :handle_http_adapter_error
+      rescue_from Adapters::WeatherApi::HttpAdapter::Error, with: :handle_error
+      rescue_from ActiveModel::ValidationError, with: :handle_error
 
       def index
-        if address.valid?
-          @forecast = ForecastService.new(zip: address.zip, days: forecast_in_days).call
+        address = Address.new(address_params)
+        address.validate!
 
-          respond_to do |format|
-            format.json do
-              if unit_system == "metric"
-                render :show_metric, status: :ok
-              else
-                render :show_imperial, status: :ok
-              end
-            end
-          end
-        else
-          respond_to do |format|
-            format.json do
-              render json: { errors: address.errors.as_json }, status: :unprocessable_content
-            end
-          end
-        end
+        @forecast = ForecastService.new(zip: address.zip, days: forecast_days).call
+        render "show_#{unit_system}", status: :ok
       end
 
       private
 
-      def address
-        @address ||= Address.new(address_params)
-      end
-
       def unit_system
-        permitted_params[:unit].presence_in(%w[imperial metric]) || "imperial"
+        params[:unit].presence_in(%w[imperial metric]) || "imperial"
       end
 
-      def forecast_in_days
-        days = permitted_params[:days].to_i
-        return ForecastService::MAX_DAYS if days > ForecastService::MAX_DAYS
-
-        days
+      def forecast_days
+        params[:days].to_i
       end
 
       def address_params
-        permitted_params[:address]
+        params.fetch(:address, {}).permit(:street, :city, :state, :zip)
       end
 
-      def permitted_params
-        params.permit(
-          { address: [ :street, :city, :state, :zip ] },
-          :days,
-          :unit)
-      end
-
-      def forecast_adapter
-        Adapters::WeatherApi::HttpAdapter.new
-      end
-
-      def handle_http_adapter_error(error)
-        respond_to do |format|
-          format.json do
-            render json: { error: error.message }, status: :unprocessable_content
-          end
-        end
+      def handle_error(error)
+        render json: { error: error.message }, status: :unprocessable_entity
       end
     end
   end
