@@ -1,0 +1,6 @@
+<div class="hourly-card">
+  <p class="time"><%= Time.parse(hour["time"]).strftime("%H:%M") %></p>
+  <p class="temperature"><%= hour["temperature"] %>° <%= temperature_unit %></p>
+  <p class="condition"><%= hour["condition"] %></p>
+  <p class="feels-like">Feels like: <%= hour["feels_like"] || "N/A" %>° <%= temperature_unit %></p>
+</div>

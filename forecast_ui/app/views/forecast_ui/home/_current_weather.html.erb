@@ -1,0 +1,38 @@
+<div class="weather-card-current container-card">
+  <div class="container-current-weather">
+    <div>
+      <h2 class="title">Current Weather</h2>
+      <p class="title-text"><%= current["condition"] || "Clear" %></p>
+      <div class="text-sm opacity-90">
+        <br />
+        <% if cached %>
+          <span class="cached-icon cached-icon-yes">
+            <svg fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v14a1 1 0 01-1 1H4a1 1 0 01-1-1V3zm1 2v12h12V5H4z" clip-rule="evenodd" />
+            </svg>
+            Cached
+          </span>
+        <% else %>
+          <span class="cached-icon cached-icon-no">
+            <svg fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
+            </svg>
+            Fresh
+          </span>
+        <% end %>
+      </div>
+    </div>
+    <div class="current-info">
+      <div class="current-temperature"><%= current["temperature"] || "N/A" %>° <%= temperature_unit %></div>
+      <div class="additional-info">
+        <p>Feels Like: <%= current["feels_like"] || "N/A" %>° <%= temperature_unit %></p>
+        <p>
+          Wind: <%= current["wind"]["speed"] || "N/A" %> <%= velocity_unit %>
+          <%= current["wind"]["direction"]["dir"] || "N/A" %>
+          (<%= current["wind"]["direction"]["degree"] || "N/A" %>°)
+        </p>
+        <p>UV Index: <%= current["uv"] || "N/A" %></p>
+      </div>
+    </div>
+  </div>
+</div>

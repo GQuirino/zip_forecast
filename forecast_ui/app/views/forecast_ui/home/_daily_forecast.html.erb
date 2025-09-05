@@ -1,0 +1,33 @@
+<div class="forecast-card">
+  <div class="card-header">
+    <div>
+      <h4 class="day">
+        <%= today ? "Today" : day["day"] %>
+      </h4>
+      <p class="text-gray-600"><%= day["condition"] %></p>
+    </div>
+    <div class="text-right">
+      <div class="temp-range">
+        <span class="max-temp"><%= day["max"] %>° <%= temperature_unit %></span>
+        <span class="separator">/</span>
+        <span class="min-temp"><%= day["min"] %>° <%= temperature_unit %></span>
+      </div>
+      <div class="weather-conditions">
+        <span>💧 <%= day["humidity"] %>%</span>
+        <span class="ml-2">🌧️ <%= day["chance_of_rain"] %>%</span>
+        <span>❄️ <%= day["chance_of_snow"] %>%</span>
+        <span class="ml-2"></span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <h5>Hourly Forecast</h5>
+    <div class="hourly-container">
+      <% if day["hourly"].present? %>
+        <% day["hourly"].each do |hour| %>
+          <%= render partial: "hourly_card", locals: { hour:, temperature_unit: } %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

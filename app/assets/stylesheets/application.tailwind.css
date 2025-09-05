@@ -1,3 +1,5 @@
+@import "../../../forecast_ui/app/assets/stylesheets/forecast_ui.tailwind.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
