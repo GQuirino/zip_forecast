@@ -35,9 +35,6 @@
 
 /coverage/
 
-/app/assets/builds/*
-!/app/assets/builds/.keep
-
 /vendor/*
 
 dump.rdb
