@@ -54,6 +54,3 @@ RSpec.describe ForecastService do
     end
   end
 end
-
-
-
