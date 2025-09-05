@@ -6,7 +6,7 @@
     <% end %>
 
     <!-- Daily Forecast Cards -->
-    <div class="forecast-data">
+    <div class="forecast-daily-container">
       <h3 class="title">Daily Forecast</h3>
       <% data["forecast"].each_with_index do |day, index| %>
         <%= render partial: "daily_forecast", locals: { day:, today: index == 0, temperature_unit: } %>

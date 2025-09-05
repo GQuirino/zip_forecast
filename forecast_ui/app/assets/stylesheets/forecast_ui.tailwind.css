@@ -68,16 +68,16 @@
     @apply text-green-200 border-green-300;
   }
 
-  .forecast-container {
+  .forecast-daily-container {
     @apply space-y-4;
   }
 
-  .forecast-container .title {
+  .forecast-daily-container .title {
     @apply text-xl font-semibold text-gray-800;
   }
 
   .forecast-card {
-    @apply bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden;
+    @apply bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden mb-3;
   }
 
   .forecast-card .card-header {
