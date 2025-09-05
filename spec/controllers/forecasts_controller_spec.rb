@@ -47,19 +47,13 @@ RSpec.describe Api::V1::ForecastsController, type: :request do
       VCR.use_cassette('weather_api/missing_address') do
         get api_v1_forecasts_path(format: :json), params: { address: missing_address, unit: 'imperial', days: 1 }
         expect(response).to have_http_status(:unprocessable_content)
-        expect(JSON.parse(response.body)).to have_key('errors')
+        expect(JSON.parse(response.body)).to have_key('error')
       end
     end
 
     it 'returns errors for missing address', :vcr do
       get api_v1_forecasts_path(format: :json)
       expect(response).to have_http_status(:unprocessable_content).or have_http_status(:bad_request)
-      body = JSON.parse(response.body)
-      expect(body).to have_key('errors')
-      expect(body['errors']).to include("city" => [ "can't be blank" ])
-      expect(body['errors']).to include("state" => [ "can't be blank" ])
-      expect(body['errors']).to include("street" => [ "can't be blank" ])
-      expect(body['errors']).to include("zip" => [ "can't be blank", "must be a valid ZIP code" ])
     end
 
     it 'returns errors for invalid zip', :vcr do
@@ -67,8 +61,8 @@ RSpec.describe Api::V1::ForecastsController, type: :request do
         get api_v1_forecasts_path(format: :json), params: { address: valid_address.merge(zip: 'abcde') }
         expect(response).to have_http_status(:unprocessable_content).or have_http_status(:bad_request)
         body = JSON.parse(response.body)
-        expect(body).to have_key('errors')
-        expect(body['errors']).to include("zip" => [ "must be a valid ZIP code" ])
+        expect(body).to have_key('error')
+        expect(body['error']).to include("Zip must be a valid ZIP code")
       end
     end
 

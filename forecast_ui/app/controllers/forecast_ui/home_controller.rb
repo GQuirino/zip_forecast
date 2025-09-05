@@ -12,7 +12,7 @@ module ForecastUi
 
     def forecasts
       unit_system = params[:unit] == "metric" ? "metric" : "imperial"
-      api_params = %w[street city state zip].map { |k| ["address[#{k}]", params[:address]&.dig(k.to_sym)] } .to_h
+      api_params = %w[street city state zip].map { |k| [ "address[#{k}]", params[:address]&.dig(k.to_sym) ] } .to_h
       api_params["unit"] = unit_system
       api_params["days"] = params[:days]
 

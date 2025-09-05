@@ -1,15 +1,15 @@
 class ForecastService
   attr_reader :zip, :days
-  
+
   def initialize(zip:, days:)
     @zip = zip
-    @days = [days, MAX_DAYS].min
+    @days = days.to_i.negative? ? 0 : [ days.to_i, MAX_DAYS ].min
   end
-  
+
   def call
     cached_result || fetch_and_cache
   end
-  
+
   private
 
   MAX_DAYS = 14

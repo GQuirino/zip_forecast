@@ -30,4 +30,30 @@ RSpec.describe ForecastService do
       end
     end
   end
+
+  describe '#initialize' do
+    it 'sets the zip and days attributes' do
+      service = described_class.new(zip: '12345', days: 5)
+      expect(service.zip).to eq('12345')
+      expect(service.days).to eq(5)
+    end
+
+    it 'does not allows days greater than MAX_DAYS (14)' do
+      service = described_class.new(zip: '12345', days: 20)
+      expect(service.days).to eq(14)
+    end
+
+    it 'allows days less than MAX_DAYS' do
+      service = described_class.new(zip: '12345', days: 7)
+      expect(service.days).to eq(7)
+    end
+
+    it 'does not allow negative days' do
+      service = described_class.new(zip: '12345', days: -3)
+      expect(service.days).to eq(0)
+    end
+  end
 end
+
+
+

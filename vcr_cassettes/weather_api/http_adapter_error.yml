@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.weatherapi.com/v1/forecast.json/forecast.json?days=0&key=<WEATHER_API_KEY>&q=00000
+    uri: https://api.weatherapi.com/v1/forecast.json/forecast.json?days=1&key=<WEATHER_API_KEY>&q=00000
     body:
       encoding: US-ASCII
       string: ''
@@ -19,7 +19,7 @@ http_interactions:
       message: Bad Request
     headers:
       Date:
-      - Mon, 01 Sep 2025 00:14:36 GMT
+      - Fri, 05 Sep 2025 14:14:23 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -29,7 +29,7 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Server:
-      - BunnyCDN-BR1-1159
+      - BunnyCDN-BR1-1341
       Cdn-Pullzone:
       - '93447'
       Cdn-Uid:
@@ -37,15 +37,15 @@ http_interactions:
       Cdn-Requestcountrycode:
       - BR
       Age:
-      - '0'
+      - '62'
       Cache-Control:
       - no-cache
       Via:
       - 1.1 varnish (Varnish/7.1)
       X-Weatherapi-Qpm-Left:
-      - '4999943'
+      - '4999912'
       X-Varnish:
-      - '733000959'
+      - 698548847 692137828
       Cdn-Proxyver:
       - '1.34'
       Cdn-Requestpullsuccess:
@@ -53,11 +53,11 @@ http_interactions:
       Cdn-Requestpullcode:
       - '400'
       Cdn-Cachedat:
-      - '09/01/2025 00:14:36'
+      - '09/05/2025 14:14:23'
       Cdn-Edgestorageid:
-      - '1160'
+      - '1168'
       Cdn-Requestid:
-      - 8046f4e94b03e4bac334b424e733a1bf
+      - d076a1dc613d3245c15a5fb36500c5ea
       Cdn-Cache:
       - MISS
       Cdn-Status:
@@ -67,5 +67,5 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: '{"error":{"code":1006,"message":"No matching location found."}}'
-  recorded_at: Mon, 01 Sep 2025 00:14:36 GMT
+  recorded_at: Fri, 05 Sep 2025 14:14:22 GMT
 recorded_with: VCR 6.3.1
