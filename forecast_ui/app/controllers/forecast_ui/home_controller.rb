@@ -32,13 +32,12 @@ module ForecastUi
       else
         render partial: "error", locals: {
           status_code: response.code,
-          error_message: "HTTP #{response.code}: #{response.message}",
           body: JSON.parse(response.body || "{}")
         }, layout: false, status: :unprocessable_entity
       end
     rescue => e
       render partial: "error", locals: {
-        error_message: e.message
+        body: { "error" => e.message }
       }, layout: false, status: :unprocessable_entity
     end
   end

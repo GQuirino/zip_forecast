@@ -1,1 +1,4 @@
 --require spec_helper
+--pattern {spec,forecast_ui/spec}/**/*_spec.rb
+
+--format documentation

@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'vcr'
 
 RSpec.describe ForecastService do
   let(:zip) { '90210' }

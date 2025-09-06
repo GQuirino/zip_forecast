@@ -38,3 +38,8 @@
 /vendor/*
 
 dump.rdb
+
+**/.byebug_history
+**/.rspec_status
+**/*/log/*
+**/*/tmp/*

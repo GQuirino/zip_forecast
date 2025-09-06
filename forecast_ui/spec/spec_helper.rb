@@ -1,8 +1,9 @@
-# frozen_string_literal: true
 require "simplecov"
+
 SimpleCov.start do
   add_filter "/spec/dummy/"
   add_filter "/spec/support/"
+  enable_coverage :branch
 end
 
 require "webmock/rspec"

@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'vcr'
 
 RSpec.describe Api::V1::ForecastsController, type: :request do
   let(:valid_address) do

@@ -10,13 +10,15 @@ require 'spec_helper'
 
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
-# Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
 
 require 'rspec/rails'
 require 'spec_helper'
 require 'vcr'
 
+engine_spec_path = Rails.root.join("forecast_ui", "spec")
+if Dir.exist?(engine_spec_path)
+  Dir[engine_spec_path.join("**/*_spec.rb")].each { |f| require f }
+end
 
 SimpleCov.minimum_coverage 100
 

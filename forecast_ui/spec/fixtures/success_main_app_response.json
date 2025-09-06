@@ -1,0 +1,173 @@
+{
+  "cached": false,
+  "current": {
+    "condition": "Sunny",
+    "uv": 1.6,
+    "temperature": 57.9,
+    "wind": {
+      "speed": 17.6,
+      "direction": {
+        "degree": 268,
+        "dir": "W"
+      }
+    },
+    "feels_like": 55.6
+  },
+  "forecast": [
+    {
+      "day": "2025-09-06",
+      "max": 66.2,
+      "min": 41.0,
+      "condition": "Partly Cloudy ",
+      "humidity": 68,
+      "chance_of_rain": 0,
+      "chance_of_snow": 0,
+      "hourly": [
+        {
+          "time": "2025-09-06 00:00",
+          "temperature": 50.1,
+          "condition": "Clear ",
+          "feels_like": 48.1
+        },
+        {
+          "time": "2025-09-06 01:00",
+          "temperature": 48.2,
+          "condition": "Clear ",
+          "feels_like": 45.9
+        },
+        {
+          "time": "2025-09-06 02:00",
+          "temperature": 46.7,
+          "condition": "Clear ",
+          "feels_like": 44.1
+        },
+        {
+          "time": "2025-09-06 03:00",
+          "temperature": 45.3,
+          "condition": "Clear ",
+          "feels_like": 42.5
+        },
+        {
+          "time": "2025-09-06 04:00",
+          "temperature": 44.0,
+          "condition": "Clear ",
+          "feels_like": 41.0
+        },
+        {
+          "time": "2025-09-06 05:00",
+          "temperature": 42.9,
+          "condition": "Partly Cloudy ",
+          "feels_like": 39.9
+        },
+        {
+          "time": "2025-09-06 06:00",
+          "temperature": 42.0,
+          "condition": "Clear ",
+          "feels_like": 38.7
+        },
+        {
+          "time": "2025-09-06 07:00",
+          "temperature": 42.2,
+          "condition": "Sunny",
+          "feels_like": 38.9
+        },
+        {
+          "time": "2025-09-06 08:00",
+          "temperature": 46.6,
+          "condition": "Sunny",
+          "feels_like": 43.7
+        },
+        {
+          "time": "2025-09-06 09:00",
+          "temperature": 57.9,
+          "condition": "Sunny",
+          "feels_like": 49.8
+        },
+        {
+          "time": "2025-09-06 10:00",
+          "temperature": 57.5,
+          "condition": "Sunny",
+          "feels_like": 56.4
+        },
+        {
+          "time": "2025-09-06 11:00",
+          "temperature": 61.2,
+          "condition": "Sunny",
+          "feels_like": 60.7
+        },
+        {
+          "time": "2025-09-06 12:00",
+          "temperature": 63.0,
+          "condition": "Sunny",
+          "feels_like": 62.7
+        },
+        {
+          "time": "2025-09-06 13:00",
+          "temperature": 64.4,
+          "condition": "Partly Cloudy ",
+          "feels_like": 64.3
+        },
+        {
+          "time": "2025-09-06 14:00",
+          "temperature": 65.3,
+          "condition": "Overcast ",
+          "feels_like": 65.2
+        },
+        {
+          "time": "2025-09-06 15:00",
+          "temperature": 65.3,
+          "condition": "Cloudy ",
+          "feels_like": 65.3
+        },
+        {
+          "time": "2025-09-06 16:00",
+          "temperature": 65.6,
+          "condition": "Overcast ",
+          "feels_like": 65.6
+        },
+        {
+          "time": "2025-09-06 17:00",
+          "temperature": 65.0,
+          "condition": "Cloudy ",
+          "feels_like": 65.0
+        },
+        {
+          "time": "2025-09-06 18:00",
+          "temperature": 64.2,
+          "condition": "Overcast ",
+          "feels_like": 64.2
+        },
+        {
+          "time": "2025-09-06 19:00",
+          "temperature": 62.4,
+          "condition": "Overcast ",
+          "feels_like": 62.4
+        },
+        {
+          "time": "2025-09-06 20:00",
+          "temperature": 61.3,
+          "condition": "Cloudy ",
+          "feels_like": 61.3
+        },
+        {
+          "time": "2025-09-06 21:00",
+          "temperature": 60.2,
+          "condition": "Overcast ",
+          "feels_like": 60.2
+        },
+        {
+          "time": "2025-09-06 22:00",
+          "temperature": 57.6,
+          "condition": "Overcast ",
+          "feels_like": 57.0
+        },
+        {
+          "time": "2025-09-06 23:00",
+          "temperature": 57.8,
+          "condition": "Partly Cloudy ",
+          "feels_like": 57.1
+        }
+      ]
+    }
+  ]
+}
