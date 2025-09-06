@@ -22,4 +22,11 @@ Gem::Specification.new do |spec|
   end
 
   spec.add_dependency "rails", ">= 8.0.2.1"
+
+  spec.add_development_dependency "rspec-rails"
+  spec.add_development_dependency "webmock"
+  spec.add_development_dependency "simplecov"
+  spec.add_development_dependency "rack-test"
+  spec.add_development_dependency "byebug"
+  spec.add_development_dependency "rails-controller-testing"
 end
